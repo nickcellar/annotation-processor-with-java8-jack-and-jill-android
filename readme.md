@@ -1,4 +1,4 @@
-# Android Annotation Processor with Java 8 and Jack&Jill
+# Android Annotation Processor with Java8 and Jack&Jill
 
 ## Project Set Up
 
