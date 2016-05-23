@@ -54,17 +54,21 @@ dependencies {
 }
 ```
 
-## Issue
+## Issues
 
 - Classes are generated in `build/intermediates/classes/` instead of `build/generated/source/`, so they are not treated as source by Android Studio. Code referencing them will be displayed red.
-- 
+<img width="628" alt="screen shot 2016-05-23 at 6 56 33 pm" src="https://cloud.githubusercontent.com/assets/623060/15487134/bdffbebc-2118-11e6-9416-2cbe49dff288.png">
 
 
-## 2016/5/23 - After Google IO, 
+
+## Change Log
+
+### 2016/5/23 - After Google IO
 
 - Testing code using Java8 with the latest Android Annotation Processor tool from
 'com.android.tools.build:gradle:2.2.0-alpha1'.
 - Android N must be targeted and latest build tool ('24.0.0 rc4') must be used to work.
 - It is working but generated code cannot be recognized by Android Studio.
 - Extra library is needed to work -> 'com.google.guava:guava:18.0'.
+- Classes are generated in `build/intermediates/classes/` instead of `build/generated/source/`
 
