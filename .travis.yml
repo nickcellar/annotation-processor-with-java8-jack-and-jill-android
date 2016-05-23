@@ -6,4 +6,4 @@ jdk:
 android:
   components:
     - platform-tools-preview
-    - android-N
+    - 'android-N'
