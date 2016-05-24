@@ -1,8 +1,6 @@
-# Android Annotation Processor with Java8 and Jack&Jill
+# Android Annotation Processor<b/>With Java8 and Jack&Jill [![CircleCI](https://circleci.com/gh/nickwph/annotation-processor-with-java8-jack-and-jill-android.svg?style=svg)](https://circleci.com/gh/nickwph/annotation-processor-with-java8-jack-and-jill-android)
 
 Just a project to try out Android Annotation Processor in the new Java8 and Jack&Jill enviornment.
-
-[![Build Status](https://travis-ci.org/nickwph/annotation-processor-with-java8-jack-and-jill-android.svg?branch=master)](https://travis-ci.org/nickwph/annotation-processor-with-java8-jack-and-jill-android)
 
 ## Project Set Up
 
