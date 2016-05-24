@@ -1,4 +1,6 @@
-# Android Annotation Processor with Java8 and Jack&Jill
+# Android Annotation Processor<b/>With Java8 and Jack&Jill [![CircleCI](https://circleci.com/gh/nickwph/annotation-processor-with-java8-jack-and-jill-android.svg?style=svg)](https://circleci.com/gh/nickwph/annotation-processor-with-java8-jack-and-jill-android)
+
+Just a project to try out Android Annotation Processor in the new Java8 and Jack&Jill enviornment.
 
 ## Project Set Up
 
@@ -63,10 +65,10 @@ dependencies {
 
 ### 2016/5/23 - After Google IO
 
-- Testing code using Java8 with the latest Android Annotation Processor tool from
-'com.android.tools.build:gradle:2.2.0-alpha1'.
-- Android N must be targeted and latest build tool ('24.0.0 rc4') must be used to work.
+- Testing code using Java8 with Annotation Processor  from
+`com.android.tools.build:gradle:2.2.0-alpha1`.
+- Android`N` must be targeted and latest build tool `24.0.0 rc4` must be used to work.
 - It is working but generated code cannot be recognized by Android Studio.
-- Extra library is needed to work -> 'com.google.guava:guava:18.0'.
+- Extra library is needed to work -> `com.google.guava:guava:18.0`.
 - Classes are generated in `build/intermediates/classes/` instead of `build/generated/source/`
 
