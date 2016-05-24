@@ -4,4 +4,6 @@ machine:
 
 dependencies:
   pre:
-    - echo y | android update sdk --no-ui --all --filter "tools-preview,platform-tools-preview,android-n"
+    - echo y | android update sdk --no-ui --all --filter "tools-preview"
+    - echo y | android update sdk --no-ui --all --filter "platform-tools-preview"
+    - echo y | android update sdk --no-ui --all --filter "android-n"
