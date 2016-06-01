@@ -21,28 +21,32 @@ public class MainActivity extends Activity {
 
     private MainComponent component;
 
-    @BindView(R.id.hello)
-    TextView view;
+    @BindView(R.id.hello) TextView view;
 
-    @Inject
-    Utility utility;
+    @Inject Utility utility;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // init dagger and test running injected untility
         component = DaggerMainComponent.builder().mainModule(new MainModule(this)).build();
         component.inject(this);
         utility.run();
+
+        // test if view binding works
         ButterKnife.bind(this);
         view.setText("hello back");
         view.setOnClickListener(view1 -> {
             Toast.makeText(this, "hello back back", Toast.LENGTH_LONG).show();
         });
 
-        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6);
-        list.forEach(integer -> {
-            view.setText(view.getText() + " => " + integer);
-        });
+        // test java8 stream and lambda api works
+        List<Integer> list = Arrays.asList(3, 1, 2);
+        list.stream()
+                .sorted()
+                .map(String::valueOf)
+                .forEach(integer -> view.setText(view.getText() + " => " + integer));
     }
 }
