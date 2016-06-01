@@ -5,7 +5,7 @@ Just a project to try out Android Annotation Processor in the new Java8 and Jack
 ## Project Set Up
 
 ### /build.gradle
-```
+```groovy
 buildscript {
     ...
     dependencies {
@@ -16,7 +16,7 @@ buildscript {
 ```
 
 ### /app/build.gradle
-```
+```groovy
 android {
     compileSdkVersion 'android-N'
     buildToolsVersion '24.0.0 rc4'
@@ -36,7 +36,7 @@ android {
 ```
 
 ## Sample Dependencies
-```
+```groovy
 dependencies {
     compile 'com.google.dagger:dagger:2.2'
     compile 'javax.annotation:jsr250-api:1.0'
@@ -63,10 +63,15 @@ dependencies {
 
 ## Change Log
 
+### 2016/6/1 - Android Plugin Updated
+
+- Updated android plugin version to `com.android.tools.build:gradle:2.2.0-alpha2`.
+- Extra dependency `com.google.guava:guava:18.0` is still neccessary.
+- Classes are generated in a bad location `build/intermediates/classes/`
+
 ### 2016/5/23 - After Google IO
 
-- Testing code using Java8 with Annotation Processor  from
-`com.android.tools.build:gradle:2.2.0-alpha1`.
+- Testing code using Java8 with Annotation Processor from `com.android.tools.build:gradle:2.2.0-alpha1`.
 - Android`N` must be targeted and latest build tool `24.0.0 rc4` must be used to work.
 - It is working but generated code cannot be recognized by Android Studio.
 - Extra library is needed to work -> `com.google.guava:guava:18.0`.
