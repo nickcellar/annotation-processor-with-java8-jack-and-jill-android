@@ -10,7 +10,7 @@ buildscript {
     ...
     dependencies {
         classpath 'com.google.guava:guava:18.0'
-        classpath 'com.android.tools.build:gradle:2.2.0-alpha1'
+        classpath 'com.android.tools.build:gradle:2.2.0-alpha2'
     }
 }
 ```
