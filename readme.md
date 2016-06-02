@@ -93,6 +93,7 @@ dependencies {
 ### 2016/6/2 - Temporary Fix
 - Added script to temporarily place generated code into source directory.
 - See here: [/app/build.gradle](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/blob/master/app/build.gradle#L56-L78)
+- Alternative with gradle plugin. See changes in a [pull request](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/pull/3)
 
 ### 2016/6/1 - Android Plugin Updated
 
