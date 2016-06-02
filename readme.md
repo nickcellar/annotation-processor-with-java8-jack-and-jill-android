@@ -34,6 +34,32 @@ android {
     ...
 }
 ```
+```groovy
+// temporarily place generated code into source directory
+project.afterEvaluate {
+    def pluginContainer = project.plugins
+    def variants
+    if (pluginContainer.hasPlugin("com.android.application") || pluginContainer.hasPlugin("com.android.test")) {
+        def appExtension = project.android
+        variants = appExtension.applicationVariants
+    } else if (pluginContainer.hasPlugin("com.android.library")) {
+        def libraryExtension = project.android
+        variants = libraryExtension.libraryVariants
+    } else {
+        throw new Exception("The android application or library plugin must be applied to the project")
+    }
+    variants.all { variant ->
+        File file = project.file(new File(project.buildDir, "generated/source/annotationProcessor/${variant.name}"))
+        project.tasks.getByName("transformClassesWithPreJackPackagedLibrariesFor${variant.name.capitalize()}").doFirst {
+            file.mkdirs()
+        }
+        variant.addJavaSourceFoldersToModel(file)
+        def jackTransform = variant.javaCompiler.transform
+        def jackProcessOptions = jackTransform.options
+        jackProcessOptions.additionalParameters.put("jack.annotation-processor.source.output", file.absolutePath)
+    }
+}
+```
 
 ## Sample Dependencies
 ```groovy
@@ -59,9 +85,14 @@ dependencies {
 ## Issues
 
 - Classes are generated in `build/intermediates/classes/` instead of `build/generated/source/`, so they are not treated as source by Android Studio. Code referencing them will be displayed red.
+- This issue is 'kinda' fixed temporary with a script: https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/blob/master/app/build.gradle#L56-L78
 <img width="628" alt="screen shot 2016-05-23 at 6 56 33 pm" src="https://cloud.githubusercontent.com/assets/623060/15487134/bdffbebc-2118-11e6-9416-2cbe49dff288.png">
 
 ## Change Log
+
+### 2016/6/2 - Temporary Fix
+- Added script to temporarily place generated code into source directory.
+- See here: [/app/build.gradle](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/blob/master/app/build.gradle#L56-L78)
 
 ### 2016/6/1 - Android Plugin Updated
 
