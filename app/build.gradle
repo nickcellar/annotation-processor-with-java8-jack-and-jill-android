@@ -54,14 +54,11 @@ dependencies {
 }
 
 project.afterEvaluate {
-    def pluginContainer = project.plugins
     def variants
-    if (pluginContainer.hasPlugin("com.android.application") || pluginContainer.hasPlugin("com.android.test")) {
-        def appExtension = project.android
-        variants = appExtension.applicationVariants
-    } else if (pluginContainer.hasPlugin("com.android.library")) {
-        def libraryExtension = project.android
-        variants = libraryExtension.libraryVariants
+    if (project.plugins.hasPlugin("com.android.application") || project.plugins.hasPlugin("com.android.test")) {
+        variants = project.android.applicationVariants
+    } else if (project.plugins.hasPlugin("com.android.library")) {
+        variants = project.android.libraryVariants
     } else {
         throw new Exception("The android application or library plugin must be applied to the project")
     }
@@ -71,8 +68,6 @@ project.afterEvaluate {
             file.mkdirs()
         }
         variant.addJavaSourceFoldersToModel(file)
-        def jackTransform = variant.javaCompiler.transform
-        def jackProcessOptions = jackTransform.options
-        jackProcessOptions.additionalParameters.put("jack.annotation-processor.source.output", file.absolutePath)
+        variant.javaCompiler.transform.options.additionalParameters.put("jack.annotation-processor.source.output", file.absolutePath)
     }
 }
