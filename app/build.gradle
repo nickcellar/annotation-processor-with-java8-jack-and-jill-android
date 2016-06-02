@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.example.nickwph.jackandjillannotationtest'
 
 android {
     compileSdkVersion 'android-N'
@@ -51,28 +52,4 @@ dependencies {
 
     compile 'com.bluelinelabs:logansquare:1.3.6'
     annotationProcessor 'com.bluelinelabs:logansquare-compiler:1.3.6'
-}
-
-project.afterEvaluate {
-    def pluginContainer = project.plugins
-    def variants
-    if (pluginContainer.hasPlugin("com.android.application") || pluginContainer.hasPlugin("com.android.test")) {
-        def appExtension = project.android
-        variants = appExtension.applicationVariants
-    } else if (pluginContainer.hasPlugin("com.android.library")) {
-        def libraryExtension = project.android
-        variants = libraryExtension.libraryVariants
-    } else {
-        throw new Exception("The android application or library plugin must be applied to the project")
-    }
-    variants.all { variant ->
-        File file = project.file(new File(project.buildDir, "generated/source/annotationProcessor/${variant.name}"))
-        project.tasks.getByName("transformClassesWithPreJackPackagedLibrariesFor${variant.name.capitalize()}").doFirst {
-            file.mkdirs()
-        }
-        variant.addJavaSourceFoldersToModel(file)
-        def jackTransform = variant.javaCompiler.transform
-        def jackProcessOptions = jackTransform.options
-        jackProcessOptions.additionalParameters.put("jack.annotation-processor.source.output", file.absolutePath)
-    }
 }

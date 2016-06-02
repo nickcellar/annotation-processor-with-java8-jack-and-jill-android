@@ -1,0 +1,10 @@
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    compile 'com.google.guava:guava:18.0'
+    compile 'com.android.tools.build:gradle:2.2.0-alpha2'
+}
