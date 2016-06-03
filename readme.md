@@ -9,7 +9,7 @@ Just a project to try out Android Annotation Processor in the new Java8 and Jack
 buildscript {
     ...
     dependencies {
-        classpath 'com.google.guava:guava:18.0'
+        classpath 'com.google.guava:guava:18.0' // https://code.google.com/p/android/issues/detail?id=211890
         classpath 'com.android.tools.build:gradle:2.2.0-alpha2'
     }
 }
@@ -93,7 +93,7 @@ dependencies {
 ### 2016/6/1 - Android Plugin Updated
 
 - Updated android plugin version to `com.android.tools.build:gradle:2.2.0-alpha2`.
-- Extra dependency `com.google.guava:guava:18.0` is still neccessary.
+- Extra dependency `com.google.guava:guava:18.0` is still neccessary. [Ticket](https://code.google.com/p/android/issues/detail?id=211890) filed.
 - Classes are generated in a bad location `build/intermediates/classes/`
 
 ### 2016/5/23 - After Google IO
