@@ -4,7 +4,7 @@ Just a project to try out Android Annotation Processor in the new Java8 and Jack
 
 ## Project Set Up
 
-### /build.gradle
+#### /build.gradle
 ```groovy
 buildscript {
     ...
@@ -15,7 +15,7 @@ buildscript {
 }
 ```
 
-### /app/build.gradle
+#### /app/build.gradle
 ```groovy
 android {
     compileSdkVersion 'android-N'
@@ -88,24 +88,24 @@ dependencies {
 
 ## Change Log
 
-### 2016/6/13 - Android Plugin Updated
+#### 2016/6/13 - Android Plugin Updated
 
 - Updated android plugin version to `com.android.tools.build:gradle:2.2.0-alpha3`.
 - Java 8 stream api is no longer working.
 - [Ticket](https://code.google.com/p/android/issues/detail?id=212925) filed.
 
-### 2016/6/2 - Temporary Solution
+#### 2016/6/2 - Temporary Solution
 - Added script to temporarily place generated code into source directory.
 - See here: [gist](https://gist.github.com/nickwph/fac980fd6cf4ef9415d5a35477646024) or [/app/build.gradle](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/blob/master/app/build.gradle#L48-L65)
 - Alternative with gradle plugin. See changes in a [pull request](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/pull/3)
 
-### 2016/6/1 - Android Plugin Updated
+#### 2016/6/1 - Android Plugin Updated
 
 - Updated android plugin version to `com.android.tools.build:gradle:2.2.0-alpha2`.
 - Extra dependency `com.google.guava:guava:18.0` is still neccessary. [Ticket](https://code.google.com/p/android/issues/detail?id=211890) filed.
 - Classes are generated in a bad location `build/intermediates/classes/`
 
-### 2016/5/23 - After Google IO
+#### 2016/5/23 - After Google IO
 
 - Testing code using Java8 with Annotation Processor from `com.android.tools.build:gradle:2.2.0-alpha1`.
 - Android`N` must be targeted and latest build tool `24.0.0 rc4` must be used to work.
