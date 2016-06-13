@@ -60,11 +60,7 @@ project.afterEvaluate {
 ```groovy
 dependencies {
     compile 'com.google.dagger:dagger:2.2'
-    compile 'javax.annotation:jsr250-api:1.0'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.2'
-
-    compile 'com.bluelinelabs:logansquare:1.3.6'
-    annotationProcessor 'com.bluelinelabs:logansquare-compiler:1.3.6'
 
     compile 'com.google.auto.value:auto-value:1.2'
     annotationProcessor 'com.google.auto.value:auto-value:1.2'
