@@ -10,7 +10,7 @@ buildscript {
     ...
     dependencies {
         classpath 'com.google.guava:guava:18.0' // https://code.google.com/p/android/issues/detail?id=211890
-        classpath 'com.android.tools.build:gradle:2.2.0-alpha2'
+        classpath 'com.android.tools.build:gradle:2.2.0-alpha3'
     }
 }
 ```
@@ -79,6 +79,7 @@ dependencies {
 
 - Stream api is not working working after upgrading to `2.2.0-alpha3`. 
 - Uncomment [these lines](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/blob/master/app/src/main/java/com/example/nickwph/jackandjillannotationtest/MainActivity.java#L45-L48) to test.
+- Follow [ticket](https://code.google.com/p/android/issues/detail?id=212925).
 
 ```
 :app:transformJackWithJackForDebug
@@ -118,6 +119,7 @@ Error:Execution failed for task ':app:transformJackWithJackForDebug'.
 
 - Updated android plugin version to `com.android.tools.build:gradle:2.2.0-alpha3`.
 - Java 8 stream api is no longer working.
+- [Ticket](https://code.google.com/p/android/issues/detail?id=212925) filed.
 
 ### 2016/6/2 - Temporary Solution
 - Added script to temporarily place generated code into source directory.
