@@ -2,11 +2,9 @@ package com.example.nickwph.jackandjillannotationtest;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -44,9 +42,9 @@ public class MainActivity extends Activity {
 
         // test java8 stream and lambda api works
         List<Integer> list = Arrays.asList(3, 1, 2);
-        list.stream()
-                .sorted()
-                .map(String::valueOf)
-                .forEach(integer -> view.setText(view.getText() + " => " + integer));
+//        list.stream()
+//                .sorted()
+//                .map(String::valueOf)
+//                .forEach(integer -> view.setText(view.getText() + " => " + integer));
     }
 }
