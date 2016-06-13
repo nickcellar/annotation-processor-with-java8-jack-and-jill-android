@@ -84,7 +84,7 @@ dependencies {
 #### Incorrect location for code generation
 - **This issue has a temporary solution [here](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/blob/master/app/build.gradle#L56-L78).** 
 - Classes are generated in `build/intermediates/classes/` instead of `build/generated/source/`, so they are not treated as source by Android Studio. Code referencing them will be displayed red.
-- <img width="628" alt="screen shot 2016-05-23 at 6 56 33 pm" src="https://cloud.githubusercontent.com/assets/623060/15487134/bdffbebc-2118-11e6-9416-2cbe49dff288.png">
+<img width="628" alt="screen shot 2016-05-23 at 6 56 33 pm" src="https://cloud.githubusercontent.com/assets/623060/15487134/bdffbebc-2118-11e6-9416-2cbe49dff288.png">
 
 ## Change Log
 
