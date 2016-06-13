@@ -75,40 +75,13 @@ dependencies {
 
 ## Issues
 
-### Java 8 Stream API Not Working
+#### Java 8 Stream API Not Working
 
 - Stream api is not working working after upgrading to `2.2.0-alpha3`. 
 - Uncomment [these lines](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/blob/master/app/src/main/java/com/example/nickwph/jackandjillannotationtest/MainActivity.java#L45-L48) to test.
 - Follow [ticket](https://code.google.com/p/android/issues/detail?id=212925).
 
-```
-:app:transformJackWithJackForDebug
-Error:~/JackAndJillAnnotationTest/app/src/main/java/com/example/nickwph/jackandjillannotationtest/MainActivity.java:45: The method stream() is undefined for the type List<Integer>
-Warning:~/JackAndJillAnnotationTest/app/build/generated/source/annotationProcessor/debug/com/example/nickwph/jackandjillannotationtest/MainActivity$$ViewBinder.java:23: Type safety: The constructor MainActivity$$ViewBinder.InnerUnbinder(MainActivity) belongs to the raw type MainActivity$$ViewBinder.InnerUnbinder. References to generic type MainActivity$$ViewBinder<T>.InnerUnbinder<T> should be parameterized
-Warning:~/JackAndJillAnnotationTest/app/build/generated/source/annotationProcessor/debug/com/example/nickwph/jackandjillannotationtest/MainActivity$$ViewBinder.java:23: Type safety: The expression of type MainActivity$$ViewBinder.InnerUnbinder needs unchecked conversion to conform to MainActivity$$ViewBinder.InnerUnbinder<T>
-Warning:~/JackAndJillAnnotationTest/app/build/generated/source/annotationProcessor/debug/com/example/nickwph/jackandjillannotationtest/MainActivity$$ViewBinder.java:23: MainActivity$$ViewBinder.InnerUnbinder is a raw type. References to generic type MainActivity$$ViewBinder<T>.InnerUnbinder<T> should be parameterized
-com.android.jack.api.v01.CompilationException: Failed to compile
-	at com.android.jack.api.v01.impl.Api01ConfigImpl$Api01CompilationTaskImpl.run(Api01ConfigImpl.java:109)
-	at com.android.builder.core.AndroidBuilder.convertByteCodeUsingJackApis(AndroidBuilder.java:1736)
-	at com.android.builder.core.AndroidBuilder.convertByteCodeUsingJack(AndroidBuilder.java:1609)
-	at com.android.build.gradle.internal.transforms.JackTransform.runJack(JackTransform.java:222)
-	at com.android.build.gradle.internal.transforms.JackTransform.transform(JackTransform.java:196)
-	at com.android.build.gradle.internal.pipeline.TransformTask$2.call(TransformTask.java:170)
-	at com.android.build.gradle.internal.pipeline.TransformTask$2.call(TransformTask.java:166)
-	at com.android.builder.profile.ThreadRecorder$1.record(ThreadRecorder.java:55)
-	at com.android.builder.profile.ThreadRecorder$1.record(ThreadRecorder.java:47)
-	at com.android.build.gradle.internal.pipeline.TransformTask.transform(TransformTask.java:165)
-    ...
-Error:com.android.jack.frontend.FrontendCompilationException: Failed to compile
-	at com.android.jack.Jack.buildSession(Jack.java:895)
-	at com.android.jack.Jack.run(Jack.java:475)
-	at com.android.jack.api.v01.impl.Api01ConfigImpl$Api01CompilationTaskImpl.run(Api01ConfigImpl.java:102)
-	... 93 more
-Error:Execution failed for task ':app:transformJackWithJackForDebug'.
-> com.android.build.api.transform.TransformException: com.android.jack.api.v01.CompilationException: Failed to compile
-```
-
-### Incorrect location for code generation
+#### Incorrect location for code generation
 - **This issue has a temporary solution [here](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/blob/master/app/build.gradle#L56-L78).** 
 - Classes are generated in `build/intermediates/classes/` instead of `build/generated/source/`, so they are not treated as source by Android Studio. Code referencing them will be displayed red.
 - <img width="628" alt="screen shot 2016-05-23 at 6 56 33 pm" src="https://cloud.githubusercontent.com/assets/623060/15487134/bdffbebc-2118-11e6-9416-2cbe49dff288.png">
