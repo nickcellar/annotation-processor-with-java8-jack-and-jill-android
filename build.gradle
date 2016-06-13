@@ -2,10 +2,9 @@ buildscript {
     repositories {
         jcenter()
     }
-    //noinspection GroovyAssignabilityCheck
     dependencies {
         classpath 'com.google.guava:guava:18.0'
-        classpath 'com.android.tools.build:gradle:2.2.0-alpha2'
+        classpath 'com.android.tools.build:gradle:2.2.0-alpha3'
     }
 }
 
