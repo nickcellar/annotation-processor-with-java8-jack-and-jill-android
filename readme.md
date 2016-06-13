@@ -82,7 +82,7 @@ dependencies {
 - Follow [ticket](https://code.google.com/p/android/issues/detail?id=212925).
 
 #### Incorrect location for code generation
-- **This issue has a temporary solution [here](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/blob/master/app/build.gradle#L56-L78).** 
+- **This issue has a temporary solution as [gist](https://gist.github.com/nickwph/fac980fd6cf4ef9415d5a35477646024) or  [here](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/blob/master/app/build.gradle#L48-L65).** 
 - Classes are generated in `build/intermediates/classes/` instead of `build/generated/source/`, so they are not treated as source by Android Studio. Code referencing them will be displayed red.
 <img width="628" alt="screen shot 2016-05-23 at 6 56 33 pm" src="https://cloud.githubusercontent.com/assets/623060/15487134/bdffbebc-2118-11e6-9416-2cbe49dff288.png">
 
@@ -96,7 +96,7 @@ dependencies {
 
 ### 2016/6/2 - Temporary Solution
 - Added script to temporarily place generated code into source directory.
-- See here: [/app/build.gradle](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/blob/master/app/build.gradle#L56-L78)
+- See here: [gist](https://gist.github.com/nickwph/fac980fd6cf4ef9415d5a35477646024) or [/app/build.gradle](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/blob/master/app/build.gradle#L48-L65)
 - Alternative with gradle plugin. See changes in a [pull request](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/pull/3)
 
 ### 2016/6/1 - Android Plugin Updated
