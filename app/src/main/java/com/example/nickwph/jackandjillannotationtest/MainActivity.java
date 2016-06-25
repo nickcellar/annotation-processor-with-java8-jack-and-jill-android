@@ -13,8 +13,6 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-//import butterknife.ButterKnife;
-
 public class MainActivity extends Activity {
 
     private MainComponent component;
@@ -42,9 +40,9 @@ public class MainActivity extends Activity {
 
         // test java8 stream and lambda api works
         List<Integer> list = Arrays.asList(3, 1, 2);
-//        list.stream()
-//                .sorted()
-//                .map(String::valueOf)
-//                .forEach(integer -> view.setText(view.getText() + " => " + integer));
+        list.stream()
+                .sorted()
+                .map(String::valueOf)
+                .forEach(integer -> view.setText(view.getText() + " => " + integer));
     }
 }

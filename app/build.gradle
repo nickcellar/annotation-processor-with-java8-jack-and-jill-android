@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 'android-N'
-    buildToolsVersion '24.0.0 rc4'
+    buildToolsVersion '24.0.0'
     defaultConfig {
         applicationId "com.example.nickwph.jackandjillannotationtest"
         minSdkVersion 16
@@ -28,12 +28,12 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:support-annotations:23.4.0'
+    compile 'com.android.support:support-annotations:24.0.0'
 
     testCompile 'junit:junit:4.12'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support.test:runner:0.5'
-    androidTestCompile 'com.android.support:support-annotations:23.4.0'
+    androidTestCompile 'com.android.support:support-annotations:24.0.0'
 
     compile 'com.google.dagger:dagger:2.2'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.2'
@@ -43,23 +43,4 @@ dependencies {
 
     compile 'com.jakewharton:butterknife:8.0.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.0.1'
-}
-
-project.afterEvaluate {
-    def variants
-    if (project.plugins.hasPlugin("com.android.application") || project.plugins.hasPlugin("com.android.test")) {
-        variants = project.android.applicationVariants
-    } else if (project.plugins.hasPlugin("com.android.library")) {
-        variants = project.android.libraryVariants
-    } else {
-        throw new Exception("The android application or library plugin must be applied to the project")
-    }
-    variants.all { variant ->
-        File file = project.file(new File(project.buildDir, "generated/source/annotationProcessor/${variant.name}"))
-        project.tasks.getByName("transformClassesWithPreJackPackagedLibrariesFor${variant.name.capitalize()}").doFirst {
-            file.mkdirs()
-        }
-        variant.addJavaSourceFoldersToModel(file)
-        variant.javaCompiler.transform.options.additionalParameters.put("jack.annotation-processor.source.output", file.absolutePath)
-    }
 }
