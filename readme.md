@@ -9,8 +9,7 @@ Just a project to try out Android Annotation Processor in the new Java8 and Jack
 buildscript {
     ...
     dependencies {
-        classpath 'com.google.guava:guava:18.0' // https://code.google.com/p/android/issues/detail?id=211890
-        classpath 'com.android.tools.build:gradle:2.2.0-alpha3'
+        classpath 'com.android.tools.build:gradle:2.2.0-alpha4'
     }
 }
 ```
@@ -18,41 +17,20 @@ buildscript {
 #### /app/build.gradle
 ```groovy
 android {
-    compileSdkVersion 'android-N'
-    buildToolsVersion '24.0.0 rc4'
+    compileSdkVersion 24
+    buildToolsVersion '24.0.0'
     defaultConfig {
-        ...
-        targetSdkVersion 'N'
+        targetSdkVersion 24
         jackOptions {
             enabled true
         }
+        ...
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
     ...
-}
-```
-```groovy
-// temporarily solution: place generated code into source directory
-project.afterEvaluate {
-    def variants
-    if (project.plugins.hasPlugin("com.android.application") || project.plugins.hasPlugin("com.android.test")) {
-        variants = project.android.applicationVariants
-    } else if (project.plugins.hasPlugin("com.android.library")) {
-        variants = project.android.libraryVariants
-    } else {
-        throw new Exception("The android application or library plugin must be applied to the project")
-    }
-    variants.all { variant ->
-        File file = project.file(new File(project.buildDir, "generated/source/annotationProcessor/${variant.name}"))
-        project.tasks.getByName("transformClassesWithPreJackPackagedLibrariesFor${variant.name.capitalize()}").doFirst {
-            file.mkdirs()
-        }
-        variant.addJavaSourceFoldersToModel(file)
-        variant.javaCompiler.transform.options.additionalParameters.put("jack.annotation-processor.source.output", file.absolutePath)
-    }
 }
 ```
 
@@ -75,18 +53,25 @@ dependencies {
 
 ## Issues
 
-#### Java 8 Stream API Not Working
+#### ~~Java 8 Stream API Not Working~~ (fixed since `2.2.0-alpha4`)
 
-- Stream api is not working working after upgrading to `2.2.0-alpha3`. 
-- Uncomment [these lines](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/blob/master/app/src/main/java/com/example/nickwph/jackandjillannotationtest/MainActivity.java#L45-L48) to test.
-- Follow [ticket](https://code.google.com/p/android/issues/detail?id=212925).
+- ~~Stream api is not working working after upgrading to `2.2.0-alpha3`.~~
+- ~~Uncomment [these lines](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/blob/master/app/src/main/java/com/example/nickwph/jackandjillannotationtest/MainActivity.java#L45-L48) to test.~~
+- ~~Follow [ticket](https://code.google.com/p/android/issues/detail?id=212925).~~
 
-#### Incorrect location for code generation
-- **This issue has a temporary solution as [gist](https://gist.github.com/nickwph/fac980fd6cf4ef9415d5a35477646024) or  [here](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/blob/master/app/build.gradle#L48-L65).** 
-- Classes are generated in `build/intermediates/classes/` instead of `build/generated/source/`, so they are not treated as source by Android Studio. Code referencing them will be displayed red.
+#### ~~Incorrect location for code generation~~ (fixed since `2.2.0-alpha4`)
+- ~~**This issue has a temporary solution as [gist](https://gist.github.com/nickwph/fac980fd6cf4ef9415d5a35477646024)**~~
+- ~~Classes are generated in `build/intermediates/classes/` instead of `build/generated/source/`, so they are not treated as source by Android Studio. Code referencing them will be displayed red.~~
 <img width="628" alt="screen shot 2016-05-23 at 6 56 33 pm" src="https://cloud.githubusercontent.com/assets/623060/15487134/bdffbebc-2118-11e6-9416-2cbe49dff288.png">
 
 ## Change Log
+
+#### 2016/6/25 - Android Plugin Updated
+
+- Updated android plugin version to `com.android.tools.build:gradle:2.2.0-alpha4`.
+- Extra dependency `com.google.guava:guava:18.0` is no longer needed
+- Java 8 stream api is fixed.
+- Classes are generated in `build/generated/source/apt` now.
 
 #### 2016/6/13 - Android Plugin Updated
 
@@ -96,7 +81,7 @@ dependencies {
 
 #### 2016/6/2 - Temporary Solution
 - Added script to temporarily place generated code into source directory.
-- See here: [gist](https://gist.github.com/nickwph/fac980fd6cf4ef9415d5a35477646024) or [/app/build.gradle](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/blob/master/app/build.gradle#L48-L65)
+- See here: [gist](https://gist.github.com/nickwph/fac980fd6cf4ef9415d5a35477646024)
 - Alternative with gradle plugin. See changes in a [pull request](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/pull/3)
 
 #### 2016/6/1 - Android Plugin Updated
