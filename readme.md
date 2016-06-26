@@ -56,8 +56,15 @@ dependencies {
 #### ~~Java 8 Stream API Not Working~~ (fixed since `2.2.0-alpha4`)
 
 - ~~Stream api is not working working after upgrading to `2.2.0-alpha3`.~~
-- ~~Uncomment [these lines](https://github.com/nickwph/annotation-processor-with-java8-jack-and-jill-android/blob/master/app/src/main/java/com/example/nickwph/jackandjillannotationtest/MainActivity.java#L45-L48) to test.~~
 - ~~Follow [ticket](https://code.google.com/p/android/issues/detail?id=212925).~~
+- ~~It means the following doesn't work:~~
+```
+Arrays.asList(3, 1, 2)
+    .stream()
+    .sorted()
+    .map(String::valueOf)
+    .forEach(integer -> view.setText(view.getText() + " => " + integer));
+```
 
 #### ~~Incorrect location for code generation~~ (fixed since `2.2.0-alpha4`)
 - ~~**This issue has a temporary solution as [gist](https://gist.github.com/nickwph/fac980fd6cf4ef9415d5a35477646024)**~~
