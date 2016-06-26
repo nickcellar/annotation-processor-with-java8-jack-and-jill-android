@@ -72,6 +72,9 @@ dependencies {
 - Extra dependency `com.google.guava:guava:18.0` is no longer needed
 - Java 8 stream api is fixed.
 - Classes are generated in `build/generated/source/apt` now.
+- `compileSdkVersion` is updated to `24`
+- `buildToolsVersion` is updated to `24.0.0`
+- `targetSdkVersion` is updated to `24`
 
 #### 2016/6/13 - Android Plugin Updated
 
