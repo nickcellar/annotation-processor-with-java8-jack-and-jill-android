@@ -7,7 +7,6 @@ Just a project to try out Android Annotation Processor in the new Java8 and Jack
 #### /build.gradle
 ```groovy
 buildscript {
-    ...
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.0-alpha4'
     }
@@ -24,28 +23,27 @@ android {
         jackOptions {
             enabled true
         }
-        ...
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    ...
 }
 ```
 
 ## Sample Dependencies
 ```groovy
 dependencies {
-    compile 'com.google.dagger:dagger:2.2'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.2'
-
+    // dagger 2
+    compile 'com.google.dagger:dagger:2.5'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.5'
+    // auto-value
     compile 'com.google.auto.value:auto-value:1.2'
     annotationProcessor 'com.google.auto.value:auto-value:1.2'
-
-    compile 'com.jakewharton:butterknife:8.0.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.0.1'
-
+    // butterknife
+    compile 'com.jakewharton:butterknife:8.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.1.0'
+    // logan square
     compile 'com.bluelinelabs:logansquare:1.3.6'
     annotationProcessor 'com.bluelinelabs:logansquare-compiler:1.3.6'
 }
@@ -53,23 +51,32 @@ dependencies {
 
 ## Issues
 
-#### ~~Java 8 Stream API Not Working~~ (fixed since `2.2.0-alpha4`)
+#### Instant Run Not Supported
+It is simply not supported now. Notification will be shown whenever you try to use it.
+<img width="628" src="https://cloud.githubusercontent.com/assets/623060/16383564/9d0fae00-3c53-11e6-977d-90b5d0c7b9a1.png">
 
-- ~~Stream api is not working working after upgrading to `2.2.0-alpha3`.~~
-- ~~Follow [ticket](https://code.google.com/p/android/issues/detail?id=212925).~~
-- ~~It means the following doesn't work:~~
+#### Data Binding Not Supported
+If you put the following, error will be thrown.
 ```
-Arrays.asList(3, 1, 2)
-    .stream()
+android {
+    dataBinding {
+        enabled = true // Error: Data Binding does not support Jack builds yet
+    }
+}
+```
+
+#### ~~Java 8 Stream API Not Working~~ (fixed since `2.2.0-alpha4`)
+~~Stream api is not working working after upgrading to `2.2.0-alpha3`, follow [ticket](https://code.google.com/p/android/issues/detail?id=212925). It means the following doesn't work:~~
+```
+Arrays.asList(3, 1, 2).stream()
     .sorted()
     .map(String::valueOf)
     .forEach(integer -> view.setText(view.getText() + " => " + integer));
 ```
 
 #### ~~Incorrect location for code generation~~ (fixed since `2.2.0-alpha4`)
-- ~~**This issue has a temporary solution as [gist](https://gist.github.com/nickwph/fac980fd6cf4ef9415d5a35477646024)**~~
-- ~~Classes are generated in `build/intermediates/classes/` instead of `build/generated/source/`, so they are not treated as source by Android Studio. Code referencing them will be displayed red.~~
-<img width="628" alt="screen shot 2016-05-23 at 6 56 33 pm" src="https://cloud.githubusercontent.com/assets/623060/15487134/bdffbebc-2118-11e6-9416-2cbe49dff288.png">
+~~Classes are generated in `build/intermediates/classes/` instead of `build/generated/source/`, so they are not treated as source by Android Studio. Code referencing them will be displayed red. **This issue has a [temporary solution](https://gist.github.com/nickwph/fac980fd6cf4ef9415d5a35477646024)**~~
+<img width="628" src="https://cloud.githubusercontent.com/assets/623060/15487134/bdffbebc-2118-11e6-9416-2cbe49dff288.png">
 
 ## Change Log
 
