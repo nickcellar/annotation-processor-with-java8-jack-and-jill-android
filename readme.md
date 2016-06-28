@@ -52,7 +52,7 @@ dependencies {
 ## Issues
 
 #### Stream API Only Supported In Android N
-If is only supported if you set `minSdkVersion` to `24` or above.
+It is only supported if you set `minSdkVersion` to `24` or above.
 
 #### Instant Run Not Supported
 It is simply not supported now. Notification will be shown whenever you try to use it.
