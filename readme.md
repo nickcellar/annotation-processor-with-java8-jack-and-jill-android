@@ -35,8 +35,8 @@ android {
 ```groovy
 dependencies {
     // dagger 2
-    compile 'com.google.dagger:dagger:2.4'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.4'
+    compile 'com.google.dagger:dagger:2.5'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.5'
     // auto-value
     compile 'com.google.auto.value:auto-value:1.2'
     annotationProcessor 'com.google.auto.value:auto-value:1.2'
