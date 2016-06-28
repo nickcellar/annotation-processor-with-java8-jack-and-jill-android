@@ -51,6 +51,9 @@ dependencies {
 
 ## Issues
 
+#### Stream API Only Supported In Android N
+If is only supported if you set `minSdkVersion` to `24` or above.
+
 #### Instant Run Not Supported
 It is simply not supported now. Notification will be shown whenever you try to use it.
 <img width="628" src="https://cloud.githubusercontent.com/assets/623060/16383564/9d0fae00-3c53-11e6-977d-90b5d0c7b9a1.png">
