@@ -1,0 +1,8 @@
+{
+  "hello": "world",
+  "double_value": 123.23,
+  "numbers": [
+    342134,
+    1524532
+  ]
+}

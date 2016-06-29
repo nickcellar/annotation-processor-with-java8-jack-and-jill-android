@@ -29,4 +29,13 @@ public class UtilityTest {
         utility.run();
         Assert.assertEquals("hello from utility", ShadowToast.getTextOfLatestToast());
     }
+
+    @Test
+    public void shouldHaveCorrectValuesOnGetJson() throws Exception {
+        Json json = utility.getJson();
+        Assert.assertEquals("world", json.hello);
+        Assert.assertEquals(123.23, json.doubleValue, 0.01);
+        Assert.assertEquals(342134, (int) json.numbers.get(0));
+        Assert.assertEquals(1524532, (int) json.numbers.get(1));
+    }
 }
