@@ -26,9 +26,9 @@ class Utility {
         Toast.makeText(context, "hello from utility", Toast.LENGTH_LONG).show();
     }
 
-    Json getJson() {
+    SampleJson getSampleJson() {
         try {
-            return LoganSquare.parse(context.getResources().openRawResource(R.raw.main), Json.class);
+            return LoganSquare.parse(context.getResources().openRawResource(R.raw.sample), SampleJson.class);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

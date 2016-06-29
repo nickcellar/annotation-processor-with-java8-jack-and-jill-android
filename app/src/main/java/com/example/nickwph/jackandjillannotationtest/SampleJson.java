@@ -9,7 +9,8 @@ import java.util.List;
  * Created by nickwph on 6/29/16.
  */
 @JsonObject
-class Json {
+class SampleJson {
+
     @JsonField String hello;
     @JsonField(name = "double_value") Double doubleValue;
     @JsonField List<Integer> numbers;

@@ -26,11 +26,13 @@ public class MainActivity extends Activity {
 
         // init dagger and test running injected untility
         ((MainApplication) getApplication()).getComponent().inject(this);
+        SampleAutoValue value = SampleAutoValue.builder().name("auto value").build();
+        SampleJson json = utility.getSampleJson();
         utility.run();
 
         // test if view binding works
         ButterKnife.bind(this);
-        view.setText("hello");
+        view.setText("hello " + json.hello + " and " + value.getName());
         view.setOnClickListener(view1 -> {
             Toast.makeText(this, "hello back", Toast.LENGTH_LONG).show();
         });

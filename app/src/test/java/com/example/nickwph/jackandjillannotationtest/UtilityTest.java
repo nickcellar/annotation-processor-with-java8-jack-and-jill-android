@@ -31,8 +31,8 @@ public class UtilityTest {
     }
 
     @Test
-    public void shouldHaveCorrectValuesOnGetJson() throws Exception {
-        Json json = utility.getJson();
+    public void shouldHaveCorrectValuesOnGetSampleJson() throws Exception {
+        SampleJson json = utility.getSampleJson();
         Assert.assertEquals("world", json.hello);
         Assert.assertEquals(123.23, json.doubleValue, 0.01);
         Assert.assertEquals(342134, (int) json.numbers.get(0));
