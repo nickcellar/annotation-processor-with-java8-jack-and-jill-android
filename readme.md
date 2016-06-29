@@ -1,6 +1,23 @@
 # Android Annotation Processor<br/>With Java8 and Jack&Jill [![CircleCI](https://circleci.com/gh/nickwph/annotation-processor-with-java8-jack-and-jill-android.svg?style=svg)](https://circleci.com/gh/nickwph/annotation-processor-with-java8-jack-and-jill-android)
 
-Just a project to try out Android Annotation Processor in the new Java8 and Jack&Jill enviornment.
+Just a project to try out Android Annotation Processor in the new Java8 and Jack&Jill enviornment. Also check if libraries and testing frameworks work with it.
+
+#### Supported tools
+- [ ] Instant Run
+- [ ] Data Binding (`android.dataBinding.enabled = true` will fail)
+- [ ] Minifying For Tests (Enable proguard for `release` and set `testBuildType 'release'` will fail)
+
+#### Libraries
+- [x] Dagger 2.4
+- [x] Dagger 2.5 (`classpath 'com.google.guava:guava:19.0'` needed)
+- [x] AutoValue 1.2
+- [x] Butterknife 8.1.0
+- [x] LoganSquare 1.3.6
+
+#### Testing frameworks
+- [x] JUnit 4.12
+- [x] Robolectric 3.1
+- [x] Mockito 1.10.19
 
 ## Project Set Up
 
@@ -60,10 +77,29 @@ It is simply not supported now. Notification will be shown whenever you try to u
 
 #### Data Binding Not Supported
 If you put the following, error will be thrown.
-```
+```groovy
 android {
     dataBinding {
         enabled = true // Error: Data Binding does not support Jack builds yet
+    }
+}
+```
+
+#### Minifying For Tests Not Supported
+If you put the following, error will be thrown.
+```
+Error:A problem occurred configuring project ':app'.
+> Minifying the variant used for tests is not supported when using Jack.
+```
+```groovy
+android {
+    testBuildType 'release'
+    buildTypes {
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
     }
 }
 ```
