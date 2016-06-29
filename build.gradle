@@ -3,6 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
+        classpath 'com.google.guava:guava:19.0'
         classpath 'com.android.tools.build:gradle:2.2.0-alpha4'
     }
 }
