@@ -11,6 +11,7 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by nickwph on 6/28/16.
@@ -20,6 +21,7 @@ import static org.mockito.Mockito.verify;
 public class MainActivityTest {
 
     @Mock Utility utility;
+    @Mock SampleJson json;
 
     @Before
     public void setUp() throws Exception {
@@ -27,6 +29,7 @@ public class MainActivityTest {
         TestApplication application = (TestApplication) RuntimeEnvironment.application;
         TestComponent component = (TestComponent) application.getComponent();
         component.setUtility(utility);
+        when(utility.getSampleJson()).thenReturn(json);
     }
 
     @Test

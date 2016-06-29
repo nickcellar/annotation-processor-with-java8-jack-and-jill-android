@@ -13,7 +13,7 @@ import org.robolectric.shadows.ShadowToast;
  * Created by nickwph on 6/29/16.
  */
 @RunWith(RobolectricGradleTestRunner.class)
-@Config(application = TestApplication.class, constants = BuildConfig.class, sdk = 18)
+@Config(constants = BuildConfig.class, sdk = 18)
 public class UtilityTest {
 
     private Utility utility;

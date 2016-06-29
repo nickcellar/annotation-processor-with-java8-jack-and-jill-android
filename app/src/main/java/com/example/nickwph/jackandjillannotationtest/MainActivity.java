@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // init dagger and test running injected untility
+        // init dagger and test running injected utility
         ((MainApplication) getApplication()).getComponent().inject(this);
         SampleAutoValue value = SampleAutoValue.builder().name("auto value").build();
         SampleJson json = utility.getSampleJson();
