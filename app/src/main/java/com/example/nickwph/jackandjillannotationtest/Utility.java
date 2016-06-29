@@ -10,16 +10,15 @@ import javax.inject.Singleton;
  * Created by nickwph on 5/23/16.
  */
 @Singleton
-public class Utility {
+class Utility {
+
+    @Inject Context context;
 
     @Inject
-    Context context;
-
-    @Inject
-    public Utility() {
+    Utility() {
     }
 
-    public void run() {
-        Toast.makeText(context, "hello world", Toast.LENGTH_LONG).show();
+    void run() {
+        Toast.makeText(context, "hello from utility", Toast.LENGTH_LONG).show();
     }
 }

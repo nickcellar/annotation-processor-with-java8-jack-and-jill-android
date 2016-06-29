@@ -15,8 +15,6 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends Activity {
 
-    private MainComponent component;
-
     @BindView(R.id.hello) TextView view;
 
     @Inject Utility utility;
@@ -27,15 +25,14 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         // init dagger and test running injected untility
-        component = DaggerMainComponent.builder().mainModule(new MainModule(this)).build();
-        component.inject(this);
+        ((MainApplication) getApplication()).getComponent().inject(this);
         utility.run();
 
         // test if view binding works
         ButterKnife.bind(this);
-        view.setText("hello back");
+        view.setText("hello");
         view.setOnClickListener(view1 -> {
-            Toast.makeText(this, "hello back back", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "hello back", Toast.LENGTH_LONG).show();
         });
 
         // test java8 stream and lambda api works

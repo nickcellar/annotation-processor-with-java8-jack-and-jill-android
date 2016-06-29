@@ -21,7 +21,7 @@ class MainModule {
 
     @Provides
     @Singleton
-    public Context getContext() {
+    Context context() {
         return context;
     }
 }
