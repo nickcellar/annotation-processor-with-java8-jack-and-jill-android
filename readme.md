@@ -2,6 +2,8 @@
 
 Just a project to try out Android Annotation Processor in the new Java8 and Jack&Jill enviornment. Also check if libraries and testing frameworks work with it.
 
+First of all, make sure you know what is JACK&JILL. Check this [talk about The Jack and Jill Build System on Youtube](http://www.youtube.com/watch?v=IwklNEYYs2I).
+
 #### Supported tools
 - [ ] Instant Run
 - [ ] Data Binding (`android.dataBinding.enabled = true` will fail)
